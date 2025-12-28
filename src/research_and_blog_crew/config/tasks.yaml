@@ -1,0 +1,13 @@
+report_task:
+  description: >
+    Generate a detailed report on the specified topic:{topic}, including key findings, data analysis, and actionable insights.
+  expected_output: >
+    A 2000 words comprehensive report document covering all aspects of the topic: {topic}.
+  agent: report_generator
+
+blog_task:
+  description: >
+    based on the report on topic {topic}, write an engaging and informative blog post about the specified topic: {topic}, capturing readers' interest and providing valuable insights.
+  expected_output: >
+    A 500 words blog post that is both engaging and informative on the topic: {topic}.
+  agent: blog_writer
