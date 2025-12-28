@@ -1,160 +1,180 @@
 # 🧠 AI Research & Blog Generator  
-### A Multi-Agent AI Application using CrewAI & Streamlit
+### Multi-Agent Content Generation using CrewAI & Streamlit
 
-A production-ready **agentic AI system** that autonomously generates **in-depth research reports** and **high-quality blog posts** on any user-provided topic.  
-The system is powered by **CrewAI**, orchestrated through multiple specialized agents, and exposed to end users via an interactive **Streamlit frontend**.
+A **production-ready agentic AI application** that autonomously generates **structured research reports** and **high-quality blog posts** on any user-defined topic.
 
-This project demonstrates **real-world agent orchestration**, **LLM integration**, and **frontend deployment**, going beyond toy examples into practical AI application design.
+The system leverages **CrewAI** for multi-agent orchestration, **LiteLLM** for LLM abstraction, and a **Streamlit frontend** to make the agents accessible to end users.
+
+This project focuses on **real-world AI system design**, not toy demos.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Features
 
-- 🧩 **Multi-Agent Architecture**
-  - Dedicated **Research Agent** for structured analysis
-  - Dedicated **Blog Writer Agent** for narrative content creation
+- **Multi-Agent Architecture**
+  - Research Agent for structured analysis
+  - Blog Writer Agent for narrative content creation
 
-- 🤖 **Agent Orchestration with CrewAI**
-  - Task dependency handling
-  - Sequential execution pipeline
-  - Clean separation of agent responsibilities
+- **CrewAI Orchestration**
+  - Sequential task execution
+  - Clear separation of agent responsibilities
+  - YAML-driven agent & task configuration
 
-- 🌐 **User-Facing Frontend (Streamlit)**
-  - Topic input via UI
-  - Real-time agent execution
-  - Rendered markdown output
+- **Interactive Frontend (Streamlit)**
+  - Topic-based input
+  - Live agent execution
+  - Markdown rendering
   - One-click blog download
 
-- 🔌 **LLM Abstraction via LiteLLM**
-  - Compatible with Groq / OpenAI / other providers
-  - Environment-based configuration
+- **LLM Provider Agnostic**
+  - Powered by LiteLLM
+  - Supports Groq, OpenAI, and other providers
 
-- 🛠 **Production-Aware Design**
-  - `src/`-based project layout
-  - YAML-based agent & task configuration
-  - Safe handling of secrets
-  - Clear execution boundaries
+- **Production-Oriented Codebase**
+  - `src/` layout
+  - Environment-safe configuration
+  - Clean execution boundaries
 
 ---
 
-## 🏗 System Architecture
+## 🏗 Architecture Overview
 
+```
 User (Browser)
-↓
-Streamlit Frontend
-↓
+   ↓
+Streamlit UI
+   ↓
 CrewAI Orchestrator
-↓
+   ↓
 ┌────────────────┬──────────────────┐
 │ Research Agent │ Blog Writer Agent │
 └────────────────┴──────────────────┘
-↓
+   ↓
 LLM Provider (Groq / OpenAI)
+```
 
-
-Each agent is **goal-driven**, operates independently, and contributes to a shared final output.
+Each agent is **goal-driven**, autonomous, and contributes to the final output.
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 
+```
 research_and_blog_crew/
 ├── src/
-│ ├── app.py # Streamlit frontend
-│ ├── research_and_blog_crew/
-│ │ ├── crew.py # Crew & agent definitions
-│ │ ├── main.py # Programmatic entrypoint
-│ │ ├── agents.yaml # Agent roles & goals
-│ │ └── tasks.yaml # Task definitions & outputs
+│   ├── app.py                       # Streamlit frontend
+│   └── research_and_blog_crew/
+│       ├── crew.py                  # Crew & agent definitions
+│       ├── main.py                  # Programmatic entrypoint
+│       ├── agents.yaml              # Agent roles & goals
+│       └── tasks.yaml               # Task definitions
 │
-├── .gitignore
 ├── README.md
+├── .gitignore
 └── .env (ignored)
-
-
-This structure follows **industry-standard Python `src` layout** for maintainability and scalability.
+```
 
 ---
 
 ## 🧠 Agent Design
 
 ### 🔍 Research Agent
-- Performs structured topic analysis
+- Performs structured topic exploration
 - Identifies key concepts, trends, and challenges
-- Produces a comprehensive research summary
+- Produces a comprehensive analytical summary
 
 ### ✍️ Blog Writer Agent
-- Converts research into an engaging narrative
-- Optimized for readability and flow
-- Produces publish-ready markdown content
+- Converts research into engaging narrative content
+- Optimized for clarity, flow, and readability
+- Produces publish-ready Markdown output
 
-Agents are configured **declaratively using YAML**, making the system easy to extend.
+Agents are **configured declaratively via YAML**, making the system easy to extend or customize.
 
 ---
 
-##  Running the Project Locally
+## ▶️ Running Locally
 
-###  Clone the repository
+### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd research_and_blog_crew
+git clone https://github.com/Shaktisinhchavda/ai-research-blog-generator.git
+cd ai-research-blog-generator
+```
 
-### Create & activate a virtual environment
+### 2️⃣ Create & activate a virtual environment
+```bash
 python -m venv .venv
 .venv\Scripts\activate
+```
 
-### Install dependencies
+### 3️⃣ Install dependencies
+```bash
 python -m pip install crewai litellm streamlit python-dotenv
+```
 
-### Configure environment variables
+### 4️⃣ Configure environment variables
+Create a `.env` file in the project root:
+```
 GROQ_API_KEY=your_api_key_here
+```
 
-### Run the frontend
+### 5️⃣ Run the frontend
+```bash
 cd src
 python -m streamlit run app.py
+```
 
-📥 Output
+Access the app at:
+```
+http://localhost:8501
+```
 
-Rendered blog content displayed directly in the UI
+---
 
-Downloadable Markdown (.md) blog file
+## 📤 Output
 
-Programmatic access via CrewOutput.raw
+- Generated blog content rendered in the UI
+- Downloadable **Markdown (.md)** file
+- Raw output accessible via `CrewOutput.raw`
 
-🧪 Why This Project Matters
+---
 
-This repository showcases:
+## 🧪 Why This Project Matters
 
-✅ Practical Agentic AI system design
+This repository demonstrates:
 
-✅ Real-world debugging of Python environments
+- Real **agentic AI system design**
+- Practical multi-agent orchestration
+- Integration of LLMs with a user-facing frontend
+- Debugging real Python environment issues
+- Clean, scalable application structure
 
-✅ Multi-agent orchestration using CrewAI
+This is **not a notebook demo** — it’s a **working AI application prototype**.
 
-✅ Frontend integration with autonomous agents
+---
 
-✅ Clean, scalable project structure
+## 🔮 Future Improvements
 
-This is not a notebook demo — it is a working AI application prototype.
+- Hierarchical (Manager–Worker) agent structure
+- Web search & retrieval tools
+- Persistent agent memory
+- FastAPI backend for production APIs
+- Authentication & user history
+- Cloud deployment (Streamlit Cloud / Docker)
 
-🔮 Future Enhancements
+---
 
-Manager–Worker (Hierarchical) agent structure
+## 📌 Notes
 
-Web search and retrieval tools
+- API keys are never committed
+- Virtual environments are excluded from version control
+- LiteLLM proxy logging warnings are optional and non-blocking
 
-Persistent agent memory
+---
 
-FastAPI backend for production deployment
+## 📜 License
 
-User authentication and history
+MIT License — free to use, modify, and distribute.
 
-Cloud deployment (Streamlit Cloud / Docker)
+---
 
-📌 Notes
 
-API keys are never committed
-
-Virtual environments are excluded from version control
-
-LiteLLM proxy logging warnings are optional and non-blocking
